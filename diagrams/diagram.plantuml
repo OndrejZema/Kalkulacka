@@ -1,0 +1,64 @@
+@startuml
+
+start
+while (True)
+
+while (True)
+
+:num1 = input;
+
+if (num1 is digit) then (yes)
+:num1 = int(num1);
+break
+else (no)
+endif
+
+endwhile
+
+while (True)
+
+:num2 = input;
+
+if (num2 is digit) then (yes)
+:num2 = int(num2);
+break
+else (no)
+endif
+
+endwhile
+
+while (True)
+
+:opr = input;
+
+if (opr in +-/*) then (yes)
+break
+else (no)
+endif
+
+endwhile
+
+switch (opr)
+case ("+")
+    :print(num1 + num2);
+case ("-")
+    :print(num1 - num2);
+case ("*")
+    :print(num1 * num2);
+case ("/")
+    :print(num1 / num2);
+endswitch 
+
+:can_close = input;
+
+if (can_close == "Y") then (yes)
+break
+else (no)
+endif
+endwhile
+
+stop
+
+
+
+@enduml
