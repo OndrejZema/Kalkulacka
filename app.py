@@ -1,39 +1,62 @@
+def is_number(text):
+    return text.replace(".", "").isdigit()
 
-while True:
 
+def get_number(text):
     while True:
-        num1 = input("Zadejte prvni cislo: ")
-        if num1.isdigit():
-            num1 = int(num1)
-            break
+        num = input("Zadejte " + text + " cislo: ").replace(",", ".")
+        if is_number(num):
+            return float(num)
         else:
             print("Zadejte prosim cislo")
 
-    while True:
-        num2 = input("Zadejte druhe cislo: ")
-        if num2.isdigit():
-            num2 = int(num2)
-            break
-        else:
-            print("Zadejte prosim cislo")
+
+def calculate(num1, num2, opr):
+    match(opr):
+        case "+":
+            return num1+num2
+        case "-":
+            return num1-num2
+        case "*":
+            return num1*num2
+        case "/":
+            return num1/num2
+
+
+def main():
+    
+    result = None
+    can_continue = "n"
 
     while True:
-        opr = input("Zadejte operaci + - * /: ")
-        if opr in "+-*/":
-            break
+
+        if can_continue == "n":
+            num1 = get_number("prvni")
         else:
-            print("Zadejte prosim operaci z: + - * /")
+            num1 = result
 
-    if opr == "+":
-        print(num1+num2)
-    elif opr == "-":
-        print(num1-num2)
-    elif opr == "*":
-        print(num1*num2)
-    elif opr == "/":
-        print(num1/num2)
+        num2 = get_number("druhe")
 
-    can_close = input("Chcete ukončit Y/N (N): ")
+        while True:
+            opr = input("Zadejte operaci + - * /: ")
+            if opr in "+-*/":
+                break
+            else:
+                print("Zadejte prosim operaci z: + - * /")
 
-    if can_close.lower() == "y":
-        break
+        result = calculate(num1, num2, opr)
+
+        print(num1, opr, num2, " = ", result)
+
+        can_continue = input("Chcete pokračovat ve výpočtu Y/N (Y): ").lower()
+        
+        if can_continue != "n":
+            continue
+
+        can_close = input("Chcete ukončit aplikaci Y/N (N): ")
+
+        if can_close.lower() == "y":
+            break
+
+if __name__ == "__main__":
+    main()
