@@ -53,7 +53,6 @@ def main():
             print("Nastala chyba")
             can_continue = "n"
             continue
-        print(type(result))
         print(num1, opr, num2, " = ", result[1])
 
         can_continue = input("Chcete pokračovat ve výpočtu Y/N (Y): ").lower()
